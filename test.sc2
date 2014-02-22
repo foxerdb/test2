@@ -31,6 +31,8 @@ DEFINE CLASS frmTest AS form
 	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagDATOS.txtDescrip" UniqueID="" Timestamp="" />
 	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagDATOS.cmdColor" UniqueID="" Timestamp="" />
 	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagDATOS.shpColor" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagDATOS.lblCosto" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagDATOS.txtCosto" UniqueID="" Timestamp="" />
 	*< OBJECTDATA: ObjPath="cmdSalir" UniqueID="" Timestamp="" />
 
 	*<DefinedPropArrayMethod>
@@ -123,6 +125,17 @@ DEFINE CLASS frmTest AS form
 		Width = 80
 		*< END OBJECT: BaseClass="label" />
 
+	ADD OBJECT 'pgfDatosYCosto.pagDATOS.lblCosto' AS label WITH ;
+		BackStyle = 0, ;
+		Caption = "Costo", ;
+		Height = 17, ;
+		Left = 111, ;
+		Name = "lblCosto", ;
+		TabIndex = 5, ;
+		Top = 40, ;
+		Width = 80
+		*< END OBJECT: BaseClass="label" />
+
 	ADD OBJECT 'pgfDatosYCosto.pagDATOS.shpColor' AS shape WITH ;
 		FillColor = 255,255,255, ;
 		FillStyle = 0, ;
@@ -142,6 +155,19 @@ DEFINE CLASS frmTest AS form
 		ReadOnly = .T., ;
 		TabIndex = 2, ;
 		Top = 64, ;
+		Width = 116
+		*< END OBJECT: BaseClass="textbox" />
+
+	ADD OBJECT 'pgfDatosYCosto.pagDATOS.txtCosto' AS textbox WITH ;
+		Alignment = 3, ;
+		ControlSource = "THISFORM.o_bus.n_costo", ;
+		Height = 23, ;
+		InputMask = "#####.##", ;
+		Left = 207, ;
+		Name = "txtCosto", ;
+		TabIndex = 1, ;
+		Top = 36, ;
+		Value = 0, ;
 		Width = 116
 		*< END OBJECT: BaseClass="textbox" />
 
@@ -182,6 +208,11 @@ DEFINE CLASS frmTest AS form
 		
 	ENDPROC
 
+	PROCEDURE pgfDatosYCosto.pagDATOS.Activate
+		THIS.Refresh()
+		
+	ENDPROC
+
 	PROCEDURE pgfDatosYCosto.pagDATOS.cmdColor.Click
 		LOCAL lnColor
 		lnColor = GETCOLOR(16777215)
@@ -193,6 +224,12 @@ DEFINE CLASS frmTest AS form
 	PROCEDURE pgfDatosYCosto.pagDATOS.cmdID.Click
 		THISFORM.o_bus.set_ID()
 		THIS.Parent.Refresh()
+		
+	ENDPROC
+
+	PROCEDURE pgfDatosYCosto.pagDATOS.txtDescrip.Valid
+		THISFORM.o_bus.set_Costo_Articulo()
+		THIS.Parent.txtCosto.Refresh()
 		
 	ENDPROC
 
