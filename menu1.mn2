@@ -21,4 +21,7 @@ ON PAD _UserMenu OF _MSYSMENU ACTIVATE POPUP UserMenu
 	DEFINE BAR 2 OF UserMenu PROMPT "Label"
 	ON SELECTION BAR 2 OF UserMenu label form test preview noconsole
 
+    DEFINE BAR 3 OF UserMenu PROMPT "Report"
+    ON SELECTION BAR 3 OF UserMenu report form test preview noconsole
+
 *</MenuCode>

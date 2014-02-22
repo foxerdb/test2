@@ -9,6 +9,7 @@ DEFINE CLASS form_bus AS custom 		&& Clase de negocio del form
  	*< CLASSDATA: Baseclass="custom" Timestamp="" Scale="Pixels" Uniqueid="" />
 
 	*<DefinedPropArrayMethod>
+		*m: *set_costo_articulo
 		*m: *set_id		&& Setea un nuevo ID
 		*m: *set_precioarticulo
 		*p: c_codigo
@@ -33,6 +34,28 @@ DEFINE CLASS form_bus AS custom 		&& Clase de negocio del form
 	n_precio = 0
 	Width = 130
 	
+	PROCEDURE set_costo_articulo
+		LOCAL lcDescrip
+		
+		lcDescrip = UPPER(ALLTRIM(THIS.c_descrip))
+		
+		DO CASE
+		CASE lcDescrip == 'BOTON'
+			THIS.n_costo = 0.15
+		
+		CASE lcDescrip == 'CLAVO'
+			THIS.n_costo = 0.05
+		
+		CASE lcDescrip == 'SILLA'
+			THIS.n_costo = 25
+		
+		OTHERWISE
+			THIS.n_costo = 99
+		
+		ENDCASE
+		
+	ENDPROC
+
 	PROCEDURE set_id		&& Setea un nuevo ID
 		THIS.c_id = SYS(2015)
 		
