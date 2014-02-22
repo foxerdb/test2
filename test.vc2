@@ -49,6 +49,9 @@ DEFINE CLASS form_bus AS custom 		&& Clase de negocio del form
 		CASE lcDescrip == 'SILLA'
 			THIS.n_costo = 25
 		
+		CASE lcDescrip == 'DEV-2'
+			THIS.n_costo = 200
+		
 		CASE lcDescrip == 'DEV-1'
 			THIS.n_costo = 100
 		
