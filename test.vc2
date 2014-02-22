@@ -11,11 +11,15 @@ DEFINE CLASS form_bus AS custom 		&& Clase de negocio del form
 	*<DefinedPropArrayMethod>
 		*m: *set_costo_articulo
 		*m: *set_id		&& Setea un nuevo ID
+		*m: *set_precioarticulo
 		*p: c_codigo
 		*p: c_descrip
 		*p: c_id
 		*p: n_color
 		*p: n_costo
+		*p: n_iva
+		*p: n_margen
+		*p: n_precio
 	*</DefinedPropArrayMethod>
 
 	c_codigo = 
@@ -25,6 +29,9 @@ DEFINE CLASS form_bus AS custom 		&& Clase de negocio del form
 	Name = "form_bus"
 	n_color = 16777215
 	n_costo = 0
+	n_iva = 0
+	n_margen = 0
+	n_precio = 0
 	Width = 130
 	
 	PROCEDURE set_costo_articulo
@@ -51,6 +58,15 @@ DEFINE CLASS form_bus AS custom 		&& Clase de negocio del form
 
 	PROCEDURE set_id		&& Setea un nuevo ID
 		THIS.c_id = SYS(2015)
+		
+	ENDPROC
+
+	PROCEDURE set_precioarticulo
+		LOCAL lnMargen, lnIVA
+		
+		lnMargen		= THIS.n_costo * THIS.n_margen / 100
+		lnIVA			= (THIS.n_costo + lnMargen) * THIS.n_iva / 100
+		THIS.n_precio	= THIS.n_costo + lnMargen + lnIVA
 		
 	ENDPROC
 

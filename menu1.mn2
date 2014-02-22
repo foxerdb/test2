@@ -18,7 +18,10 @@ ON PAD _UserMenu OF _MSYSMENU ACTIVATE POPUP UserMenu
 	DEFINE BAR 1 OF UserMenu PROMPT "Default option"
 	ON SELECTION BAR 1 OF UserMenu wait window program()
 
-	DEFINE BAR 2 OF UserMenu PROMPT "Report"
-	ON SELECTION BAR 2 OF UserMenu report form test preview noconsole
+	DEFINE BAR 2 OF UserMenu PROMPT "Label"
+	ON SELECTION BAR 2 OF UserMenu label form test preview noconsole
+
+    DEFINE BAR 3 OF UserMenu PROMPT "Report"
+    ON SELECTION BAR 3 OF UserMenu report form test preview noconsole
 
 *</MenuCode>

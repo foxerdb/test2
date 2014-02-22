@@ -31,6 +31,15 @@ DEFINE CLASS frmTest AS form
 	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagDATOS.txtDescrip" UniqueID="" Timestamp="" />
 	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagDATOS.cmdColor" UniqueID="" Timestamp="" />
 	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagDATOS.shpColor" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagCALCULOS.lblCosto" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagCALCULOS.txtCosto" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagCALCULOS.lblMargen" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagCALCULOS.txtMargen" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagCALCULOS.lblIVA" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagCALCULOS.txtIVA" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagCALCULOS.lblPrecio" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagCALCULOS.txtPrecio" UniqueID="" Timestamp="" />
+	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagCALCULOS.cmdCalcular" UniqueID="" Timestamp="" />
 	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagDATOS.lblCosto" UniqueID="" Timestamp="" />
 	*< OBJECTDATA: ObjPath="pgfDatosYCosto.pagDATOS.txtCosto" UniqueID="" Timestamp="" />
 	*< OBJECTDATA: ObjPath="cmdSalir" UniqueID="" Timestamp="" />
@@ -63,14 +72,122 @@ DEFINE CLASS frmTest AS form
 		Height = 184, ;
 		Left = 20, ;
 		Name = "pgfDatosYCosto", ;
-		PageCount = 1, ;
+		PageCount = 2, ;
 		TabIndex = 1, ;
 		TabStyle = 1, ;
 		Top = 8, ;
 		Width = 484, ;
 		Page1.Caption = "DATOS", ;
-		Page1.Name = "pagDATOS"
+		Page1.Name = "pagDATOS", ;
+		Page2.Caption = "CALCULOS", ;
+		Page2.Name = "pagCALCULOS"
 		*< END OBJECT: BaseClass="pageframe" />
+
+	ADD OBJECT 'pgfDatosYCosto.pagCALCULOS.cmdCalcular' AS commandbutton WITH ;
+		Caption = "Calcular", ;
+		Height = 27, ;
+		Left = 363, ;
+		Name = "cmdCalcular", ;
+		TabIndex = 5, ;
+		Top = 112, ;
+		Width = 84
+		*< END OBJECT: BaseClass="commandbutton" />
+
+	ADD OBJECT 'pgfDatosYCosto.pagCALCULOS.lblCosto' AS label WITH ;
+		BackStyle = 0, ;
+		Caption = "Costo", ;
+		Height = 17, ;
+		Left = 119, ;
+		Name = "lblCosto", ;
+		TabIndex = 6, ;
+		Top = 20, ;
+		Width = 80
+		*< END OBJECT: BaseClass="label" />
+
+	ADD OBJECT 'pgfDatosYCosto.pagCALCULOS.lblIVA' AS label WITH ;
+		BackStyle = 0, ;
+		Caption = "IVA", ;
+		Height = 17, ;
+		Left = 119, ;
+		Name = "lblIVA", ;
+		TabIndex = 8, ;
+		Top = 84, ;
+		Width = 80
+		*< END OBJECT: BaseClass="label" />
+
+	ADD OBJECT 'pgfDatosYCosto.pagCALCULOS.lblMargen' AS label WITH ;
+		BackStyle = 0, ;
+		Caption = "Margen", ;
+		Height = 17, ;
+		Left = 119, ;
+		Name = "lblMargen", ;
+		TabIndex = 7, ;
+		Top = 52, ;
+		Width = 80
+		*< END OBJECT: BaseClass="label" />
+
+	ADD OBJECT 'pgfDatosYCosto.pagCALCULOS.lblPrecio' AS label WITH ;
+		BackStyle = 0, ;
+		Caption = "Precio", ;
+		Height = 17, ;
+		Left = 119, ;
+		Name = "lblPrecio", ;
+		TabIndex = 9, ;
+		Top = 116, ;
+		Width = 80
+		*< END OBJECT: BaseClass="label" />
+
+	ADD OBJECT 'pgfDatosYCosto.pagCALCULOS.txtCosto' AS textbox WITH ;
+		Alignment = 3, ;
+		ControlSource = "THISFORM.o_bus.n_costo", ;
+		Height = 23, ;
+		InputMask = "######.##", ;
+		Left = 215, ;
+		Name = "txtCosto", ;
+		TabIndex = 1, ;
+		Top = 16, ;
+		Value = 0, ;
+		Width = 108
+		*< END OBJECT: BaseClass="textbox" />
+
+	ADD OBJECT 'pgfDatosYCosto.pagCALCULOS.txtIVA' AS textbox WITH ;
+		Alignment = 3, ;
+		ControlSource = "THISFORM.o_bus.n_iva", ;
+		Height = 23, ;
+		InputMask = "######.##", ;
+		Left = 215, ;
+		Name = "txtIVA", ;
+		TabIndex = 3, ;
+		Top = 80, ;
+		Value = 0, ;
+		Width = 108
+		*< END OBJECT: BaseClass="textbox" />
+
+	ADD OBJECT 'pgfDatosYCosto.pagCALCULOS.txtMargen' AS textbox WITH ;
+		Alignment = 3, ;
+		ControlSource = "THISFORM.o_bus.n_margen", ;
+		Height = 23, ;
+		InputMask = "######.##", ;
+		Left = 215, ;
+		Name = "txtMargen", ;
+		TabIndex = 2, ;
+		Top = 48, ;
+		Value = 0, ;
+		Width = 108
+		*< END OBJECT: BaseClass="textbox" />
+
+	ADD OBJECT 'pgfDatosYCosto.pagCALCULOS.txtPrecio' AS textbox WITH ;
+		Alignment = 3, ;
+		ControlSource = "THISFORM.o_bus.n_precio", ;
+		Height = 23, ;
+		InputMask = "######.##", ;
+		Left = 215, ;
+		Name = "txtPrecio", ;
+		TabIndex = 4, ;
+		Top = 112, ;
+		Value = 0, ;
+		Width = 108
+		*< END OBJECT: BaseClass="textbox" />
 
 	ADD OBJECT 'pgfDatosYCosto.pagDATOS.cmdColor' AS commandbutton WITH ;
 		Caption = "Color", ;
@@ -205,6 +322,17 @@ DEFINE CLASS frmTest AS form
 		CLEAR EVENTS
 		THISFORM.Hide()
 		THISFORM.Release()
+		
+	ENDPROC
+
+	PROCEDURE pgfDatosYCosto.pagCALCULOS.Activate
+		THIS.Refresh()
+		
+	ENDPROC
+
+	PROCEDURE pgfDatosYCosto.pagCALCULOS.cmdCalcular.Click
+		THISFORM.o_bus.set_PrecioArticulo()
+		THIS.Parent.Refresh()
 		
 	ENDPROC
 
